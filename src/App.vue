@@ -1,31 +1,56 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <header class="app-header">
+      <Nav/>
+    </header>
+
+    <div class="app-content">
+      <main class="container">
+        <Notifications/>
+        <router-view/>
+      </main>
     </div>
-    <router-view/>
+
+    <footer class="app-footer">
+      <div class="container">
+        <hr />
+        <p>&copy; App. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+<script>
+  import Nav from './components/Nav.vue'
+  import Notifications from "./components/Notifications";
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  export default {
+    components: {
+      Nav,
+      Notifications
+    }
+  }
+</script>
+
+<style lang="scss">
+  @import "assets/scss/variables";
+  @import "~bootstrap/scss/bootstrap";
+  @import "~bootstrap-vue/dist/bootstrap-vue.css";
+  @import "~@fortawesome/fontawesome-free/css/all.css";
+
+  body {
+    min-height: 100vh;
+  }
+
+  #app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+  }
+
+  .app-content {
+    flex: 1;
+    padding: 1rem 0;
+  }
 </style>
